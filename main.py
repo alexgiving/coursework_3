@@ -45,6 +45,11 @@ def create(path):
         os.mkdir(path)
 
 
+def convert_name(name):
+    # Double quote ", Colon :, Less than <, Greater than >, Vertical bar |, Asterisk *, Question mark ?, Carriage return \r, Line feed \n
+    return name.replace('"', '').replace(":", "").replace("<", "").replace(">", "").replace("|", "").replace("*", "").replace("?", "")
+
+
 def train_test_val_split(test_ratio, validation_ratio):
     # Replace all text output to index
     label_encoder = LabelEncoder()
@@ -55,7 +60,7 @@ def train_test_val_split(test_ratio, validation_ratio):
     for col in object_cols:
         label_encoder.fit(label_data[col])
         label_data[col] = label_encoder.transform(label_data[col])
-        file_name = f'{build_path}/{col.replace("/", "-")}_class_linear_encoder.npy'
+        file_name = f'{build_path}/{convert_name(col).replace("/", "-")}_class_linear_encoder.npy'
         f = open(file_name, 'w+')
         np.save(file_name, label_encoder.classes_)
         f.close()
