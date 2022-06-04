@@ -48,3 +48,13 @@ jobs:
       
       - name: Install dependencies
         run: echo print
+
+      - name: Python Linter
+        # You may pin to the exact commit or the version.
+        # uses: sunnysid3up/python-linter@93076bd8f740f062069291d738fc70c1b4171c1d
+        uses: sunnysid3up/python-linter@v0.1-beta.7
+        with:
+          # Source file or directory
+          source: .
+          # Set strictness for lint [low, medium, high]
+          strict: low
