@@ -27,6 +27,9 @@ jobs:
           echo 'bravo'    > bravo.html
           echo 'charlie'  > charlie.html
           cd ..
+          
+      - name: build model
+        run: |
           mkdir build_files
           python3 main.py
 
