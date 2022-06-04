@@ -14,6 +14,7 @@ jobs:
 
       - name: step 2 - Add artifacts to publish to the temp folder
         run: |
+          pip3 install sklearn
           cd downloads
           echo 'alpha'    > alpha.html
           echo 'bravo'    > bravo.html
