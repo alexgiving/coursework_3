@@ -26,6 +26,6 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           # Artifact name
-          name: file.txt
+          name: assets-for-download
           # Destination path
           path: build
