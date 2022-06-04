@@ -14,7 +14,7 @@ jobs:
           pip3 install openpyxl
           pip3 install pandas
           
-      - name: Run script
+      - name: Run build script
         run: |
           mkdir build_files
           python3 main.py
@@ -24,3 +24,11 @@ jobs:
         with: 
           name: artifacts
           path: build_files
+          
+  get_metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: echo print
