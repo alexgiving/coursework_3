@@ -12,6 +12,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip3 install sklearn
+          pip3 install openpyxl
           pip3 install pandas
         
       
