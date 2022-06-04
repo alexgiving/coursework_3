@@ -11,8 +11,8 @@ jobs:
 
       - name: Run a one-line script
         run: |
-          mkdir build
-          echo "Hello, world!" >> build/file.txt
+          mkdir artifacts_downloads
+          echo "Hello, world!" >> artifacts_downloads/file.txt
 
       - name: Run a multi-line script
         run: |
@@ -28,4 +28,4 @@ jobs:
           # Artifact name
           name: assets-for-download
           # Destination path
-          path: build
+          path: artifacts_downloads
