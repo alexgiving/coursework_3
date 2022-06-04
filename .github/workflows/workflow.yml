@@ -34,15 +34,11 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
           to: alexgiving@mail.ru
-          from: Github Job
+          from: alg push bot
           secure: true
           body: Build job of ${{github.repository}} completed successfully!
-          #html_body: file://README.html
-          # Optional unsigned/invalid certificates allowance:
           ignore_cert: true
-          # Optional converting Markdown to HTML (set content_type to text/html too):
           convert_markdown: true
-          # Optional attachments:
           attachments: build_files/*
           
   get_metrics:
