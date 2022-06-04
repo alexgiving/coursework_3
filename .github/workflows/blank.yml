@@ -28,4 +28,4 @@ jobs:
           # Artifact name
           name: file.txt
           # Destination path
-          path: build/file.txt
+          path: build
