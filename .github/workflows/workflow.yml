@@ -47,7 +47,10 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Install dependencies
-        run: echo print
+        run: |
+          pip3 install sklearn
+          pip3 install openpyxl
+          pip3 install pandas
 
       - name: Python Linter
         # You may pin to the exact commit or the version.
