@@ -10,15 +10,14 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Run a one-line script
-        run: echo "Hello, world!" >> file.txt
+        run: |
+          mkdir build
+          echo "Hello, world!" >> build/file.txt
 
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: 'Download artifact #2'
-        uses: actions/download-artifact@v1
-        with:
-          name: 'artifact'
-          path: some/other/path
+      - name: Commit build artefacts
+        uses: mutoco/commit-build-artefacts-action@0.4.4
