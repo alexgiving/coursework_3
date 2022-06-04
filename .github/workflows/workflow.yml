@@ -6,7 +6,7 @@ jobs:
   get_artifacts:
     runs-on: ubuntu-latest
     steps:
-      
+      - uses: actions/checkout@v3
       
       - name: Install dependencies
         run: |
@@ -22,5 +22,5 @@ jobs:
       - name: Download artifacts
         uses: actions/upload-artifact@v2
         with: 
-          name: assets-for-download
+          name: artifacts
           path: build_files
