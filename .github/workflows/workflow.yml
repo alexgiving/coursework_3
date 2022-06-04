@@ -37,7 +37,7 @@ jobs:
           from: Github Job
           secure: true
           body: Build job of ${{github.repository}} completed successfully!
-          html_body: file://README.html
+          #html_body: file://README.html
           # Optional unsigned/invalid certificates allowance:
           ignore_cert: true
           # Optional converting Markdown to HTML (set content_type to text/html too):
