@@ -18,6 +18,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          
-      - name: Commit build artefacts
-        uses: mutoco/commit-build-artefacts-action@0.4.4
+
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          # Artifact name
+          name: file.txt
+          # Destination path
+          path: build/file.txt
