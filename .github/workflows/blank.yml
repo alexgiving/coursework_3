@@ -3,9 +3,8 @@ name: CI
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
+  get_artifacts:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
       
@@ -14,26 +13,13 @@ jobs:
           pip3 install sklearn
           pip3 install openpyxl
           pip3 install pandas
-        
-      
-
-      - name: Step 1 - Create a temporary artifact downloads folder
-        run: mkdir downloads
-
-      - name: step 2 - Add artifacts to publish to the temp folder
-        run: |
-          cd downloads
-          echo 'alpha'    > alpha.html
-          echo 'bravo'    > bravo.html
-          echo 'charlie'  > charlie.html
-          cd ..
           
-      - name: build model
+      - name: Run script
         run: |
           mkdir build_files
           python3 main.py
 
-      - name: Step 3 - Use the Upload Artifact GitHub Action
+      - name: Download artifacts
         uses: actions/upload-artifact@v2
         with: 
           name: assets-for-download
