@@ -17,7 +17,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3.0.0
+      - name: 'Download artifact #2'
+        uses: actions/download-artifact@v1
         with:
-            name: artifact_name
+          name: 'artifact'
+          path: some/other/path
