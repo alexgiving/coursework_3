@@ -25,6 +25,26 @@ jobs:
           name: artifacts
           path: build_files
           
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Github Actions job result
+          to: alexgiving@mail.ru
+          from: Github Job
+          secure: true
+          body: Build job of ${{github.repository}} completed successfully!
+          html_body: file://README.html
+          # Optional unsigned/invalid certificates allowance:
+          ignore_cert: true
+          # Optional converting Markdown to HTML (set content_type to text/html too):
+          convert_markdown: true
+          # Optional attachments:
+          attachments: build_files/*
+          
   get_metrics:
     runs-on: ubuntu-latest
     steps:
