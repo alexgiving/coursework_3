@@ -20,7 +20,7 @@ jobs:
           echo test, and deploy your project.
 
       - name: Run a multi-line script
-        run: ls build/
+        run: ls artifacts_downloads/
           
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.0
