@@ -34,7 +34,7 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
           to: alexgiving@mail.ru
-          from: alg push bot
+          from: GitHub Push Bot
           secure: true
           body: Build job of ${{github.repository}} completed successfully!
           ignore_cert: true
