@@ -99,8 +99,6 @@ jobs:
         with:
           name: artifacts
           path: build_files/
-# docker build -t mytag1 .
-# docker run mytag1       
 
       # - name: Create docker image
       #   run: |
@@ -113,7 +111,6 @@ jobs:
         with:
           name: docker-artifact
           path: docker_folder_path
-          if-no-files-found: error
           retention-days: 1
       
       - name: Login to Docker Hub
