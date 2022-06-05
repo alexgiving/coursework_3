@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  docker_image_name: "simplewhale"
+  docker_image_name: simplewhale
 
 jobs:
   Build_Workflow:

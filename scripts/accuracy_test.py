@@ -6,6 +6,8 @@ import warnings
 import os
 warnings.filterwarnings("ignore")
 
+docker_image_name = os.getenv('docker_image_name')
+
 
 def create(path):
     if not os.path.exists(path):
@@ -142,6 +144,7 @@ print(f"""
     <td>{get_precicion_metrics(answer)}</td> 
   </tr>
 </table>  
+<a href="https://hub.docker.com/r/alexgiving/{docker_image_name}">Docker image is there</a>
 <p>The artifacts is below</p>
 </body></html>
 
