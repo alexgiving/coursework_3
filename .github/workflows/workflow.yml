@@ -51,14 +51,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Install dependencies
-        run: |
-          pip3 install sklearn
-          pip3 install openpyxl
-          pip3 install pandas
+      - name: Get artifacts
+      - uses: actions/download-artifact@v2
+        with:
+          name: my-artifacts
+      
 
-      - name: Get commit accuracy statistics
-        run: |
-          mkdir build_files
-          python3 scripts/build_artifacts.py
-          python3 scripts/accuracy_test.py
+          
