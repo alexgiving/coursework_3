@@ -35,7 +35,7 @@ def get_accuracy_metrics(acr):
             ct += 1
         else:
             cf += 1
-    return f"{ct/(ct+cf) * 100}%"
+    return f"{int(ct/(ct+cf) * 100)}%"
 
 
 def get_precicion_metrics(acr):
@@ -46,7 +46,7 @@ def get_precicion_metrics(acr):
             tp += 1
         elif pred != real and pred == 1:
             fp += 1
-    return f"{tp/(tp+fp) * 100}%"
+    return f"{int(tp/(tp+fp) * 100)}%"
 
 
 def get_recall_metrics(acr):
@@ -57,7 +57,7 @@ def get_recall_metrics(acr):
             tp += 1
         elif pred != real and pred == 0:
             fn += 1
-    return f"{tp/(tp+fn) * 100}%"
+    return f"{int(tp/(tp+fn) * 100)}%"
 
 
 my_questions = ["Учащийся",
