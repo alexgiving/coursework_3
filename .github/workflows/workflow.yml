@@ -33,6 +33,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Install dependencies
+        run: |
+          pip3 install sklearn
+          pip3 install openpyxl
+          pip3 install pandas
+
       - name: Get artifacts
         uses: actions/download-artifact@v2
         with:
