@@ -41,7 +41,7 @@ jobs:
           to: alexgiving@mail.ru
           from: GitHub Push Bot
           secure: true
-          body: Build job of ${{github.repository}} completed successfully!
+          #body: Build job of ${{github.repository}} completed successfully!
           html_bidy: temp/file.html
           ignore_cert: true
           convert_markdown: true
