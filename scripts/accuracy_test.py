@@ -58,7 +58,29 @@ def get_accuracy_metrics(acr):
             ct += 1
         else:
             cf += 1
-    return f"Accuracy of model: {ct/(ct+cf) * 100}%"
+    return f"{ct/(ct+cf) * 100}%"
+
+
+def get_precicion_metrics(acr):
+    tp = 0
+    fp = 0
+    for real, pred in acr:
+        if pred == real and pred == 1:
+            tp += 1
+        elif pred != real and pred == 1:
+            fp += 1
+    return f"{tp/(tp+fp) * 100}%"
+
+
+def get_recall_metrics(acr):
+    tp = 0
+    fn = 0
+    for real, pred in acr:
+        if pred == real and pred == 1:
+            tp += 1
+        elif pred != real and pred == 0:
+            fn += 1
+    return f"{tp/(tp+fn) * 100}%"
 
 
 answer = []
@@ -77,13 +99,33 @@ for i in range(len(my_answers)):
     # print_with_name(i)
 
 
-print(f"""  <!DOCTYPE html>
-            <html>
-            <body>
-            <h1>The build is done</h1>
-            <p>
-            {get_accuracy_metrics(answer)}
-            </p>
-            <p>The artifacts is below</p>
-            </body>
-            </html>""")
+print(f"""
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>The build is done successfully</h1>
+ 
+<center>
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Result</th> 
+  </tr>
+  <tr>
+    <td>Accuracy</td>
+    <td>{get_accuracy_metrics(answer)}</td>
+  </tr>
+  <tr>
+    <td>Recall</td>
+    <td>{get_recall_metrics(answer)}</td> 
+  </tr>
+ <tr>
+    <td>Precicion</td>
+    <td>{get_precicion_metrics(answer)}</td> 
+  </tr>
+</table></center>   
+<p>The artifacts is below</p>
+</body></html>
+
+""")

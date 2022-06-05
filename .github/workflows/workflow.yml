@@ -25,7 +25,7 @@ jobs:
           name: artifacts
           path: build_files
 
-      - name: html
+      - name: Prepare accuracy metrics
         run: |
           mkdir temp
           python3 scripts/accuracy_test.py >> temp/file.html
@@ -41,7 +41,6 @@ jobs:
           to: alexgiving@mail.ru
           from: GitHub Push Bot
           secure: true
-          #body: Build job of ${{github.repository}} completed successfully!
           html_body: file://temp/file.html
           ignore_cert: true
           convert_markdown: true
