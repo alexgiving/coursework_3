@@ -28,7 +28,7 @@ jobs:
       - name: html
         run: |
           mkdir temp
-          python3 accuracy_test.py >> temp/file.html
+          python3 scripts/accuracy_test.py >> temp/file.html
           
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
