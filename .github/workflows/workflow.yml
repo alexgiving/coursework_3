@@ -10,7 +10,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip3 install requirements.txt
+          pip3 install -r requirements.txt
           
       - name: Run build script
         run: |
@@ -33,7 +33,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip3 install requirements.txt
+          pip3 install -r requirements.txt
           mkdir build_files/
 
       - name: Get artifacts
