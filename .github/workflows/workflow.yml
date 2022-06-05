@@ -27,7 +27,7 @@ jobs:
 
   Output_Workflow: 
     runs-on: ubuntu-latest
-    needs: Build_Workflow, Build_Workflow
+    needs: [Build_Workflow, Build_Workflow]
     steps:
       - uses: actions/checkout@v3
       
