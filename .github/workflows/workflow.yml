@@ -38,11 +38,13 @@ jobs:
           pip3 install sklearn
           pip3 install openpyxl
           pip3 install pandas
+          mkdir build_files/
 
       - name: Get artifacts
         uses: actions/download-artifact@v2
         with:
           name: artifacts
+          path: build_files/
 
       - name: Prepare metrics
         run: |
