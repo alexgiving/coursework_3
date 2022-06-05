@@ -51,6 +51,9 @@ jobs:
           pip3 install sklearn
           pip3 install openpyxl
           pip3 install pandas
-          
-      - name: get accuracy statistics
-        run: python3 scripts/accuracy_test.py
+
+      - name: Get commit accuracy statistics
+        run: |
+          mkdir build_files
+          python3 scripts/build_artifacts.py
+          python3 scripts/accuracy_test.py
