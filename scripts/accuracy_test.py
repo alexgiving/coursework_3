@@ -105,8 +105,7 @@ print(f"""
 <html>
 <body>
 <h1>The build is done successfully</h1>
- 
-<center>
+
 <table>
   <tr>
     <th>Metric</th>
@@ -124,7 +123,7 @@ print(f"""
     <td>Precicion</td>
     <td>{get_precicion_metrics(answer)}</td> 
   </tr>
-</table></center>   
+</table>  
 <p>The artifacts is below</p>
 </body></html>
 
