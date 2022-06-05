@@ -25,7 +25,7 @@ jobs:
           name: artifacts
           path: build_files
 
-      - name: Prepare accuracy metrics
+      - name: Prepare metrics
         run: |
           mkdir temp
           python3 scripts/accuracy_test.py >> temp/file.html
