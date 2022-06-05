@@ -10,9 +10,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip3 install sklearn
-          pip3 install openpyxl
-          pip3 install pandas
+          pip3 install requirements.txt
           
       - name: Run build script
         run: |
@@ -35,9 +33,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip3 install sklearn
-          pip3 install openpyxl
-          pip3 install pandas
+          pip3 install requirements.txt
           mkdir build_files/
 
       - name: Get artifacts
@@ -79,8 +75,22 @@ jobs:
         with:
           name: artifacts
           path: build_files/
+# docker build -t mytag1 .
+# docker run mytag1       
 
-    # build docker container
+      - name: Create docker image
+        run: |
+          docker build -t productNN .
+          mkdir -p docker_folder_path
+          docker save productNN > docker_folder_path/docker-image.tar
+
+      - name: Collect artifacts 
+        uses: actions/upload-artifact@v2
+        with:
+          name: docker-artifact
+          path: docker_folder_path
+          retention-days: 1
+          
       
 
           
