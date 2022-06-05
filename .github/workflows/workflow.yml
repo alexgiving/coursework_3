@@ -72,7 +72,7 @@ jobs:
     needs: Build_Workflow
     steps:
       - uses: actions/checkout@v3
-      -run: mkdir build_files
+      - run: mkdir build_files
       
       - name: Get artifacts
         uses: actions/download-artifact@v2
