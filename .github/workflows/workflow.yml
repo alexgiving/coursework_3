@@ -80,9 +80,9 @@ jobs:
 
       - name: Create docker image
         run: |
-          docker build -t productNN .
+          docker build -t product_nn .
           mkdir -p docker_folder_path
-          docker save productNN > docker_folder_path/docker-image.tar
+          docker save product_nn > docker_folder_path/docker-image.tar
 
       - name: Collect artifacts 
         uses: actions/upload-artifact@v2
