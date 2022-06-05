@@ -17,7 +17,7 @@ jobs:
       - name: Run build script
         run: |
           mkdir build_files
-          python3 main.py
+          python3 scripts/build_artifacts.py
 
       - name: Download artifacts
         uses: actions/upload-artifact@v2
@@ -52,5 +52,5 @@ jobs:
           pip3 install openpyxl
           pip3 install pandas
           
-      - name: get last release
-        run: echo wget https://github.com/alexgiving/coursework_3/archive/refs/tags/Release_1.0.zip
+      - name: get accuracy statistics
+        run: python3 scripts/accuracy_test.py
