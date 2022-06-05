@@ -3,7 +3,13 @@ import pickle
 import pandas as pd
 import numpy as np
 import warnings
+import os
 warnings.filterwarnings("ignore")
+
+
+def create(path):
+    if not os.path.exists(path):
+        os.mkdir(path)
 
 
 def convert_name(name):
@@ -52,7 +58,7 @@ def get_accuracy_metrics(acr):
             ct += 1
         else:
             cf += 1
-    return f"accuracy {ct/(ct+cf) * 100}%"
+    return f"Accuracy of model: {ct/(ct+cf) * 100}%"
 
 
 answer = []
@@ -69,4 +75,10 @@ for i in range(len(my_answers)):
 
     answer.append((int(my_answers[i][-1]), int(y_pred_my)))
     print_with_name(i)
+
+
 print(get_accuracy_metrics(answer))
+
+
+temp_path = "temp/"
+create(temp_path)

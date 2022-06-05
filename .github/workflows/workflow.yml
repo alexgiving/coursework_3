@@ -24,6 +24,11 @@ jobs:
         with: 
           name: artifacts
           path: build_files
+
+      - name: html
+        run: |
+          mkdir temp
+          echo "<!DOCTYPE html><html><body><h1>My First Heading</h1><p>My first paragraph</p></body></html>" >> temp/file.html
           
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
@@ -37,6 +42,7 @@ jobs:
           from: GitHub Push Bot
           secure: true
           body: Build job of ${{github.repository}} completed successfully!
+          html_bidy: temp/file.html
           ignore_cert: true
           convert_markdown: true
           attachments: build_files/*
