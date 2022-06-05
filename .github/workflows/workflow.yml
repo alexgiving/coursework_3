@@ -28,7 +28,7 @@ jobs:
       - name: html
         run: |
           mkdir temp
-          echo "<!DOCTYPE html><html><body><h1>My First Heading</h1><p>My first paragraph</p></body></html>" >> temp/file.html
+          python3 accuracy_test.py >> temp/file.html
           
       - name: Send mail
         uses: dawidd6/action-send-mail@v3

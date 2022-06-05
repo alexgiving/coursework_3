@@ -74,11 +74,16 @@ for i in range(len(my_answers)):
     y_pred_my = my_model.predict(df.iloc[:, 1:])
 
     answer.append((int(my_answers[i][-1]), int(y_pred_my)))
-    print_with_name(i)
+    # print_with_name(i)
 
 
-print(get_accuracy_metrics(answer))
-
-
-temp_path = "temp/"
-create(temp_path)
+print(f"""  <!DOCTYPE html>
+            <html>
+            <body>
+            <h1>The build is done</h1>
+            <p>
+            {get_accuracy_metrics(answer)}
+            </p>
+            <p>The artifacts is below</p>
+            </body>
+            </html>""")
