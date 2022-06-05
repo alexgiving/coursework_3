@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  get_artifacts:
+  Build_Workflow:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -41,7 +41,7 @@ jobs:
           convert_markdown: true
           attachments: build_files/*
           
-  get_metrics:
+  Deploy_Workflow:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
