@@ -42,7 +42,7 @@ jobs:
           from: GitHub Push Bot
           secure: true
           #body: Build job of ${{github.repository}} completed successfully!
-          html_bidy: temp/file.html
+          html_body: temp/file.html
           ignore_cert: true
           convert_markdown: true
           attachments: build_files/*
