@@ -86,7 +86,7 @@ jobs:
     #needs: Output_Workflow
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ env.use_telegram == true }}
+      - if: ${{ env.use_telegram == "true" }}
         name: Message
         uses: appleboy/telegram-action@master
         with:
