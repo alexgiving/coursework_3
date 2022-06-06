@@ -1,6 +1,7 @@
 # Coursework ML project
 
-
-
 My CI pipeline
-![](CI.png)
+![](support/CI.png)
+
+The result is on my email
+![](support/mail.png)
