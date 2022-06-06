@@ -4,7 +4,7 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   docker_image_name: simplewhale
-  use_telegram: true
+  use_telegram: 1
 
 jobs:
   
@@ -86,7 +86,7 @@ jobs:
     #needs: Output_Workflow
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ env.use_telegram == "true" }}
+      - if: ${{ env.use_telegram == 1 }}
         name: Message
         uses: appleboy/telegram-action@master
         with:
