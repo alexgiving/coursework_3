@@ -7,6 +7,8 @@ import os
 warnings.filterwarnings("ignore")
 
 docker_image_name = os.getenv('docker_image_name')
+repo_name = os.getenv('repo_name')
+sha_git = os.getenv('sha_git')
 
 
 def create(path):
@@ -132,7 +134,7 @@ table, th, td{
 <body>
 <h1 style="color:green">The build is done successfully</h1>
 
-<p>See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}</p>
+<a href="https://github.com/{repo_name}/commit/{sha_git}">See changes</a>
 
 <table>
   <tr>
@@ -153,7 +155,6 @@ table, th, td{
   </tr>
 </table>  
 <a href="https://hub.docker.com/r/alexgiving/{docker_image_name}">Docker image is there</a>
-<p>The artifacts is below</p>
 </body></html>
 
 """)
