@@ -83,11 +83,11 @@ jobs:
           attachments: build_files/*
 
   Telegram_Notify:
-    if: ${{ env.use_telegram == true }}
     needs: Output_Workflow
     runs-on: ubuntu-latest
     steps:
-      - name: Message
+      - if: ${{ env.use_telegram == true }}
+        name: Message
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
