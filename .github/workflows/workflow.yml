@@ -41,15 +41,26 @@ jobs:
   Test_Workflow:
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-latest]
+        os: [ubuntu-20.04, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    needs: Build_Workflow
     steps:
       - uses: actions/checkout@v3
+
+      - name: Get artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: artifacts
+          path: build_files/
 
       - name: Install dependencies
         run: |
           pip3 install --upgrade pip
           pip3 install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          python3 scripts/test_script.py
 
   Output_Workflow:
     runs-on: ubuntu-latest
