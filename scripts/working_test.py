@@ -1,3 +1,4 @@
+import time
 from sklearn.preprocessing import LabelEncoder
 import pickle
 import pandas as pd
@@ -120,9 +121,12 @@ for i in range(len(my_answers)):
 
     answer.append((int(my_answers[i][-1]), int(y_pred_my)))
 
-get_accuracy_metrics(answer)
-get_recall_metrics(answer)
-get_precicion_metrics(answer)
+start = time.perf_counter()
+for i in range(100000):
+    get_accuracy_metrics(answer)
+    get_recall_metrics(answer)
+    get_precicion_metrics(answer)
+print(f"Total test time is: {time.perf_counter() - start} sec")
 
 
 def ppp():
