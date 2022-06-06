@@ -83,7 +83,7 @@ jobs:
           attachments: build_files/*
 
   Telegram_Notify:
-    if: ${{ env.use_telegram }}
+    if: ${env:use_telegram}
     needs: Output_Workflow
     runs-on: ubuntu-latest
     steps:
