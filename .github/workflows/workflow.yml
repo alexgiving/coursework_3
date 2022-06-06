@@ -4,18 +4,9 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   docker_image_name: simplewhale
+  use_telegram: true
 
 jobs:
-
-  on_finish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Failure message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: The job has failed.
   
   Build_Workflow:
     runs-on: ubuntu-latest
@@ -90,6 +81,18 @@ jobs:
           ignore_cert: true
           convert_markdown: true
           attachments: build_files/*
+
+  Telegram_Notify:
+    if: ${{ env.use_telegram }}
+    needs: Output_Workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: The job ${{job.status}}.
           
   Deploy_Workflow:
     runs-on: ubuntu-latest
