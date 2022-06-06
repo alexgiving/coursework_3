@@ -16,9 +16,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            Notify
-            The job ${{job.status}}
+          message: The job ${{job.status}}
   
   Build_Workflow:
     runs-on: ubuntu-latest
