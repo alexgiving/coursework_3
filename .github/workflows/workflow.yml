@@ -134,6 +134,9 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{env.docker_image_name}}:latest
           
+      - name: run
+        run: ls
+          
       
 
           
