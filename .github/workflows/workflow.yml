@@ -6,18 +6,16 @@ env:
   docker_image_name: simplewhale
 
 jobs:
-  IIJIHIHI:
+
+  on_finish:
     runs-on: ubuntu-latest
-    needs: Build_Workflow
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Telegram Notify
-        uses: appleboy/telegram-action@0.0.3
+      - name: Failure message
+        uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: The job ${{job.status}}
+          message: The job has failed.
   
   Build_Workflow:
     runs-on: ubuntu-latest
