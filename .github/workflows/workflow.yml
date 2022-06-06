@@ -49,12 +49,6 @@ jobs:
           name: artifacts
           path: build_files/
 
-      # - name: Get artifacts
-      #   uses: actions/download-artifact@v2
-      #   with:
-      #     name: docker-artifact
-      #     path: build_files/
-
       - name: Prepare metrics
         if: ${{ success() }} 
         run: |
@@ -91,11 +85,15 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
+            ====================
             ${{ github.actor }} created ${{job.status}} commit:
+            
             Commit message: ${{ github.event.commits[0].message }}
+            
             Repository: ${{ github.repository }}
+            
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            file://temp/file.html
+            
           #format: html
 
   Deploy_Workflow:
