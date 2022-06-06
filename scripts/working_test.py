@@ -1,3 +1,4 @@
+from statistics import mean
 import time
 from sklearn.preprocessing import LabelEncoder
 import pickle
@@ -108,25 +109,25 @@ my_answers = [
 ]
 
 answer = []
-for i in range(len(my_answers)):
-    df = pd.DataFrame(data=[my_answers[i][:-1]], columns=my_questions)
+acccur = []
+N = 1000000
+for _ in range(10000):
+    for i in range(len(my_answers)):
+        df = pd.DataFrame(data=[my_answers[i][:-1]], columns=my_questions)
 
-    for col in pd.DataFrame(df.iloc[:, 1:]).columns:
-        encoder = LabelEncoder()
-        filename = f"{build_path}/{convert_name(str(col)).replace('/', '-')}_class_linear_encoder.npy"
-        encoder.classes_ = np.load(filename, allow_pickle=True)
-        df[col] = encoder.transform(df[col])
+        for col in pd.DataFrame(df.iloc[:, 1:]).columns:
+            encoder = LabelEncoder()
+            filename = f"{build_path}/{convert_name(str(col)).replace('/', '-')}_class_linear_encoder.npy"
+            encoder.classes_ = np.load(filename, allow_pickle=True)
+            df[col] = encoder.transform(df[col])
 
-    y_pred_my = my_model.predict(df.iloc[:, 1:])
+        start = time.perf_counter()
+        y_pred_my = my_model.predict(df.iloc[:, 1:])
+        acccur.append(time.perf_counter() - start)
+        answer.append((int(my_answers[i][-1]), int(y_pred_my)))
 
-    answer.append((int(my_answers[i][-1]), int(y_pred_my)))
 
-start = time.perf_counter()
-for i in range(100000):
-    get_accuracy_metrics(answer)
-    get_recall_metrics(answer)
-    get_precicion_metrics(answer)
-print(f"Total test time is: {time.perf_counter() - start} sec")
+print(f"Average test time is: {mean(acccur)/N} sec")
 
 
 def ppp():
