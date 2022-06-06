@@ -5,7 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 env:
   docker_image_name: simplewhale
   use_telegram: 1
-  use_email: 1
+  use_email: true
   skip_deploy: 1
 
 jobs:
@@ -61,7 +61,7 @@ jobs:
           mkdir temp
           python3 scripts/failure_message.py >> temp/file.html
 
-      - if: ${{ env.use_email == 1 }}
+      - if: ${{ env.use_email == true }}
         name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
@@ -93,24 +93,6 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            
-      - if: ${{ env.use_telegram == 1 }}
-        name: Message 2
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: html
-          message: |
-            ====================
-            <html>
-            <body>
-            <h1 style="color:red">Build failed</h1>
-            <p>Please fix the bugs or revert to the last successful commit</p>
-            </body>
-            </html>
-            
-          #format: html
 
   Deploy_Workflow:
     runs-on: ubuntu-latest
