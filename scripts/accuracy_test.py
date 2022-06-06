@@ -119,7 +119,7 @@ for i in range(len(my_answers)):
     answer.append((int(my_answers[i][-1]), int(y_pred_my)))
 
 
-print(f"""
+print("""
 
 <!DOCTYPE html>
 <html>""" + """
@@ -128,7 +128,7 @@ table, th, td{
   border: 1px solid black;
 }
 </style>
-""" + """
+""" + f"""
 <body>
 <h1 style="color:green"=>The build is done successfully</h1>
 
