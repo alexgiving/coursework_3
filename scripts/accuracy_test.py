@@ -122,9 +122,15 @@ for i in range(len(my_answers)):
 print(f"""
 
 <!DOCTYPE html>
-<html>
+<html>""" + """
+<style>
+table, th, td{
+  border: 1px solid black;
+}
+</style>
+""" + """
 <body>
-<h1>The build is done successfully</h1>
+<h1 style="color:green"=>The build is done successfully</h1>
 
 <table>
   <tr>
