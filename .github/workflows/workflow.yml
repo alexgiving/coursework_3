@@ -60,7 +60,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python3 scripts/test_script.py
+          python3 scripts/accuracy_test.py
 
   Output_Workflow:
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         if: ${{ success() }}
         run: |
           mkdir temp
-          python3 scripts/accuracy_test.py >> temp/file.html
+          python3 scripts/test_script.py >> temp/file.html
 
       - name: Get failure message
         if: ${{ failure() }}
