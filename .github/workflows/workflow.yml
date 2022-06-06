@@ -41,7 +41,7 @@ jobs:
   Perf_Test_Workflow:
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-latest, windows-latest]
+        os: [ubuntu-20.04, windows-11, macos-11]
     runs-on: ${{ matrix.os }}
     needs: Build_Workflow
     steps:
