@@ -110,8 +110,8 @@ my_answers = [
 
 answer = []
 acccur = []
-N = 1000000
-for _ in range(10000):
+N = int(1000/len(my_answers))
+for _ in range(N):
     for i in range(len(my_answers)):
         df = pd.DataFrame(data=[my_answers[i][:-1]], columns=my_questions)
 
