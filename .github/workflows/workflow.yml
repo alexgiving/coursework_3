@@ -52,13 +52,20 @@ jobs:
       #     path: build_files/
 
       - name: Prepare metrics
+        if: ${{ success() }} 
         run: |
           mkdir temp
           python3 scripts/accuracy_test.py >> temp/file.html
 
+      - name: Get failure message
+        if: ${{ failure() }} 
+        run: |
+          mkdir temp
+          python3 scripts/failure_message.py >> temp/file.html
+
+
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
-        if: ${{ success() }}
         with:
           server_address: smtp.gmail.com
           server_port: 465
@@ -72,23 +79,6 @@ jobs:
           ignore_cert: true
           convert_markdown: true
           attachments: build_files/*
-
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3
-        if: ${{ failure() }}
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
-          subject: Job completed ${{job.status}}
-          to: alexgiving@mail.ru
-          from: GitHub Push Bot
-          secure: true
-          body: The pipeline is red now
-          ignore_cert: true
-          convert_markdown: true
-
           
   Deploy_Workflow:
     runs-on: ubuntu-latest
