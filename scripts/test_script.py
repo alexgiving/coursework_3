@@ -13,6 +13,11 @@ build_path = "build_files/"
 filename = f'{build_path}/DecisionTreeClassifier.sav'
 
 
+docker_image_name = os.getenv('docker_image_name')
+repo_name = os.getenv('repo_name')
+sha_git = os.getenv('sha_git')
+
+
 def convert_name(name):
     # Double quote ", Colon :, Less than <, Greater than >, Vertical bar |, Asterisk *, Question mark ?, Carriage return \r, Line feed \n
     return name.replace('"', '').replace(":", "").replace("<", "").replace(">", "").replace("|", "").replace("*", "").replace("?", "")
@@ -80,13 +85,77 @@ X_train, X_test, y_train, y_test = train_test_val_split()
 
 y_pred = my_model.predict(X_test)
 
-error_counter = 0
-total = 0
-for i in y_pred:
-    for j in y_test:
-        total += 1
-        if int(i) != int(j):
-            error_counter += 1
 
-print(
-    f'There were {error_counter} from {total} error(s)! \nAccuracy is {(total - error_counter )/ total}')
+def get_accuracy_metrics(a, b):
+    ct = 0
+    cf = 0
+    for real in a:
+        for pred in b:
+            if pred == real:
+                ct += 1
+            else:
+                cf += 1
+    return f"{int(ct/(ct+cf) * 100)}%"
+
+
+def get_precicion_metrics(a, b):
+    tp = 0
+    fp = 0
+    for real in a:
+        for pred in b:
+            if pred == real and pred == 1:
+                tp += 1
+            elif pred != real and pred == 1:
+                fp += 1
+    return f"{int(tp/(tp+fp) * 100)}%"
+
+
+def get_recall_metrics(a, b):
+    tp = 0
+    fn = 0
+    for real in a:
+        for pred in b:
+            if pred == real and pred == 1:
+                tp += 1
+            elif pred != real and pred == 0:
+                fn += 1
+    return f"{int(tp/(tp+fn) * 100)}%"
+
+
+print("""
+
+<!DOCTYPE html>
+<html>""" + """
+<style>
+table, th, td{
+  border: 1px solid black;
+}
+</style>
+""" + f"""
+<body>
+<h1 style="color:green">The build is done successfully</h1>
+
+<a href="https://github.com/{repo_name}/commit/{sha_git}">See changes</a>
+
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Result</th> 
+  </tr>
+  <tr>
+    <td>Accuracy</td>
+    <td>{get_accuracy_metrics(y_pred, y_test)}</td>
+  </tr>
+  <tr>
+    <td>Recall</td>
+    <td>{get_recall_metrics(y_pred, y_test)}</td> 
+  </tr>
+ <tr>
+    <td>Precicion</td>
+    <td>{get_precicion_metrics(y_pred, y_test)}</td> 
+  </tr>
+</table>  
+<a href="https://hub.docker.com/r/alexgiving/{docker_image_name}">Docker image is there</a>
+</body></html>
+
+""")
