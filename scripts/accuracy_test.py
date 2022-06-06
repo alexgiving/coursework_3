@@ -130,7 +130,9 @@ table, th, td{
 </style>
 """ + f"""
 <body>
-<h1 style="color:green"=>The build is done successfully</h1>
+<h1 style="color:green">The build is done successfully</h1>
+
+<p>See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}</p>
 
 <table>
   <tr>

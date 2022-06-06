@@ -3,7 +3,8 @@ print(f"""
 <html>
 <body>
 <h1 style="color:red">Build failed</h1>
-<p>Please fix the bugs or revert to the last successful commit</p>
+<p>See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}</p>
+
 </body>
 </html>
 """)
