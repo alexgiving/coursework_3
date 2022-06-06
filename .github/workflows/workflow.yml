@@ -38,7 +38,7 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
-  Test_Workflow:
+  Perf_Test_Workflow:
     strategy:
       matrix:
         os: [ubuntu-20.04, ubuntu-latest, windows-latest]
