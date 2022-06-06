@@ -126,7 +126,7 @@ jobs:
 
   Deploy_Workflow:
     runs-on: ubuntu-latest
-    needs: [Build_Workflow, Test_Workflow]
+    needs: Build_Workflow
     steps:
       - uses: actions/checkout@v3
       - run: mkdir build_files
