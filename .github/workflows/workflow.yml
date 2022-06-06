@@ -5,7 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 env:
   docker_image_name: simplewhale
   use_telegram: 1
-  use_email: true
+  use_email: 1
   skip_deploy: 1
 
 jobs:
@@ -61,7 +61,7 @@ jobs:
           mkdir temp
           python3 scripts/failure_message.py >> temp/file.html
 
-      - if: ${{ env.use_email == true }}
+      - if: ${{ env.use_email == 1 }}
         name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
