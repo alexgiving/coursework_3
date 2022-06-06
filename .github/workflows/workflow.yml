@@ -6,6 +6,20 @@ env:
   docker_image_name: simplewhale
 
 jobs:
+  Indep:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      
+      - name: Telegram Notify
+        uses: appleboy/telegram-action@0.0.3
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Notify
+            The job ${{job.status}}
+  
   Build_Workflow:
     runs-on: ubuntu-latest
     steps:
