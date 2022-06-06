@@ -4,8 +4,8 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   docker_image_name: simplewhale
-  repo_name: github.repository
-  sha_git: github.sha
+  repo_name: ${{ github.repository }}
+  sha_git: ${{ github.sha }}
 
   # bool variables
   # 1 == true
