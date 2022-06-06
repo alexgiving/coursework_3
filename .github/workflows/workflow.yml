@@ -6,9 +6,10 @@ env:
   docker_image_name: simplewhale
 
 jobs:
-  Indep:
+  IIJIHIHI:
     runs-on: ubuntu-latest
-    steps: 
+    needs: Build_Workflow
+    steps:
       - uses: actions/checkout@v3
       
       - name: Telegram Notify
