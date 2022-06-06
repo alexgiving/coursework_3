@@ -134,7 +134,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Build and push
-        if: success() and env.use_telegram != 1
+        if: success() && env.use_telegram != 1
         uses: docker/build-push-action@v2
         with:
           context: .
