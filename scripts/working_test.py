@@ -120,41 +120,46 @@ for i in range(len(my_answers)):
 
     answer.append((int(my_answers[i][-1]), int(y_pred_my)))
 
+get_accuracy_metrics(answer)
+get_recall_metrics(answer)
+get_precicion_metrics(answer)
 
-print("""
 
-<!DOCTYPE html>
-<html>""" + """
-<style>
-table, th, td{
-  border: 1px solid black;
-}
-</style>
-""" + f"""
-<body>
-<h1 style="color:green">The build is done successfully</h1>
+def ppp():
+    print("""
 
-<a href="https://github.com/{repo_name}/commit/{sha_git}">See changes</a>
+    <!DOCTYPE html>
+    <html>""" + """
+    <style>
+    table, th, td{
+    border: 1px solid black;
+    }
+    </style>
+    """ + f"""
+    <body>
+    <h1 style="color:green">The build is done successfully</h1>
 
-<table>
-  <tr>
-    <th>Metric</th>
-    <th>Result</th> 
-  </tr>
-  <tr>
-    <td>Accuracy</td>
-    <td>{get_accuracy_metrics(answer)}</td>
-  </tr>
-  <tr>
-    <td>Recall</td>
-    <td>{get_recall_metrics(answer)}</td> 
-  </tr>
- <tr>
-    <td>Precicion</td>
-    <td>{get_precicion_metrics(answer)}</td> 
-  </tr>
-</table>  
-<a href="https://hub.docker.com/r/alexgiving/{docker_image_name}">Docker image is there</a>
-</body></html>
+    <a href="https://github.com/{repo_name}/commit/{sha_git}">See changes</a>
 
-""")
+    <table>
+    <tr>
+        <th>Metric</th>
+        <th>Result</th> 
+    </tr>
+    <tr>
+        <td>Accuracy</td>
+        <td>{get_accuracy_metrics(answer)}</td>
+    </tr>
+    <tr>
+        <td>Recall</td>
+        <td>{get_recall_metrics(answer)}</td> 
+    </tr>
+    <tr>
+        <td>Precicion</td>
+        <td>{get_precicion_metrics(answer)}</td> 
+    </tr>
+    </table>  
+    <a href="https://hub.docker.com/r/alexgiving/{docker_image_name}">Docker image is there</a>
+    </body></html>
+
+    """)

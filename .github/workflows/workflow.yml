@@ -60,7 +60,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python3 scripts/accuracy_test.py
+          python3 scripts/working_test.py
 
   Output_Workflow:
     runs-on: ubuntu-latest
