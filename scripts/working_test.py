@@ -166,5 +166,4 @@ def ppp():
     </table>  
     <a href="https://hub.docker.com/r/alexgiving/{docker_image_name}">Docker image is there</a>
     </body></html>
-
     """)
